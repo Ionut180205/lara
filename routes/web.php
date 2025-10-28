@@ -7,8 +7,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
+    // dashboard-ul Breeze
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+
+    // pagina Users
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
 });
