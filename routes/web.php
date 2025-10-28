@@ -17,4 +17,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // pagina Users
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
+
 });
+require __DIR__.'/profile.php';
